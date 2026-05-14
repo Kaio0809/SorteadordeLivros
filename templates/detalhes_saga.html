@@ -1,0 +1,84 @@
+{% extends "base_privada.html" %}
+
+{% block titulo %}Detalhes da Saga{% endblock %}
+
+{% block conteudo %}
+<div class="detalhes-page">
+    
+    {% if saga %}
+        <div class="detalhes-card saga-detalhes">
+            <div class="detalhes-header">
+                <div class="detalhes-icon saga-icon">📚</div>
+                <div class="detalhes-titulo">
+                    <h2>{{ saga }}</h2>
+                    <p>Saga literária</p>
+                </div>
+                <div class="saga-stats">
+                    <span class="saga-count">{{ livros|length if livros else 0 }} livros</span>
+                </div>
+            </div>
+            
+            <div class="info-group">
+                <div class="info-header">
+                    <span class="info-icon">📖</span>
+                    <label>Livros desta saga</label>
+                </div>
+                
+                {% if livros %}
+                    <div class="livros-grid-saga">
+                        {% for livro in livros %}
+                        <div class="livro-item-saga-card">
+                            <a href="/livro/{{ livro[0] }}">
+                                <div class="livro-item-icon">📖</div>
+                                <div class="livro-item-info">
+                                    <div class="livro-item-titulo">{{ livro[1] }}</div>
+                                    <div class="livro-item-autor">{{ livro[2] }}</div>
+                                    {% if livro[3] %}
+                                        <div class="livro-item-ordem">Ordem: {{ livro[3] }}</div>
+                                    {% endif %}
+                                </div>
+                                <div class="livro-status-indicator">
+                                    {% if livro[4] %}
+                                        <span class="status-badge-small lido">✅ Lido</span>
+                                    {% else %}
+                                        <span class="status-badge-small nao-lido">📖 Não lido</span>
+                                    {% endif %}
+                                </div>
+                                <div class="livro-item-arrow">→</div>
+                            </a>
+                        </div>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    <div class="sem-resultados-saga">
+                        <div class="empty-icon">📚</div>
+                        <p>Nenhum livro encontrado para esta saga.</p>
+                    </div>
+                {% endif %}
+            </div>
+            
+            <div class="acoes-massa">
+                <form method="POST" action="/marcar-saga-lida/{{ id_saga }}" class="form-acao">
+                    <button type="submit" class="btn-acao-massa btn-marcar-todos" 
+                            onclick="return confirm('Marcar TODOS os livros desta saga como lidos?')">
+                        <span>✅</span> Marcar Todos como Lidos
+                    </button>
+                </form>
+                
+                <form method="POST" action="/desmarcar-saga-lida/{{ id_saga }}" class="form-acao">
+                    <button type="submit" class="btn-acao-massa btn-desmarcar-todos"
+                            onclick="return confirm('Desmarcar TODOS os livros desta saga?')">
+                        <span>↩️</span> Desmarcar Todos
+                    </button>
+                </form>
+            </div>
+        </div>
+    {% else %}
+        <div class="error-card">
+            <div class="error-icon">⚠️</div>
+            <p class="error">Saga não encontrada!</p>
+            <a href="/buscar" class="btn-voltar-error">← Voltar para busca</a>
+        </div>
+    {% endif %}
+</div>
+{% endblock %}

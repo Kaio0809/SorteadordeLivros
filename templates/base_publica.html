@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block titulo %}Biblioteca Sorteadora{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <!-- Cabeçalho público (sem informações de usuário) -->
+    <div class="header-privado">
+        <div class="logo">
+            <h1>📚 Biblioteca Sorteadora</h1>
+        </div>
+        
+        <div class="menu-priv">
+            <a href="/" class="menu-item">Início</a>
+            <a href="/cadastro" class="menu-item">Cadastro</a>
+        </div>
+    </div>
+    
+    <div class="conteudo">
+        {% block conteudo %}
+        {% endblock %}
+    </div>
+</body>
+</html>

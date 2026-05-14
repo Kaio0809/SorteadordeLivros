@@ -1,0 +1,59 @@
+{% extends "base_privada.html" %}
+
+{% block titulo %}Detalhes do Autor{% endblock %}
+
+{% block conteudo %}
+<div class="detalhes-page">    
+    {% if autor %}
+        <div class="detalhes-card autor-detalhes">
+            <div class="detalhes-header">
+                <div class="detalhes-icon autor-icon">✍️</div>
+                <div class="detalhes-titulo">
+                    <h2>{{ autor }}</h2>
+                    <p>Autor(a)</p>
+                </div>
+                <div class="autor-stats">
+                    <span class="info-count">{{ livros|length if livros else 0 }} livros</span>
+                </div>
+            </div>
+            
+            <div class="info-group">
+                <div class="info-header">
+                    <span class="info-icon">📚</span>
+                    <label>Livros deste autor</label>
+                </div>
+                
+                {% if livros %}
+                    <div class="livros-grid-autor">
+                        {% for livro in livros %}
+                        <div class="livro-item-autor-card">
+                            <a href="/livro/{{ livro[0] }}">
+                                <div class="livro-item-icon">📖</div>
+                                <div class="livro-item-info">
+                                    <div class="livro-item-titulo">{{ livro[1] }}</div>
+                                    {% if livro[2] %}
+                                        <div class="livro-item-saga">{{ livro[2] }}</div>
+                                    {% endif %}
+                                </div>
+                                <div class="livro-item-arrow">→</div>
+                            </a>
+                        </div>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    <div class="sem-resultados-autor">
+                        <div class="empty-icon">📚</div>
+                        <p>Nenhum livro encontrado para este autor.</p>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    {% else %}
+        <div class="error-card">
+            <div class="error-icon">⚠️</div>
+            <p class="error">Autor não encontrado!</p>
+            <a href="/buscar" class="btn-voltar-error">← Voltar para busca</a>
+        </div>
+    {% endif %}
+</div>
+{% endblock %}

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block titulo %}Área do Usuário{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="header-privado">
+        <div class="logo">
+            <h1>📚 Meus Livrinhos</h1>
+        </div>
+    </div>
+    
+    <div class="menu">
+        <a href="/dashboard" class="menu-item">Página Inicial</a>
+        <a href="/sortear" class="menu-item">Sortear Livro</a>
+        <a href="/buscar" class="menu-item">Buscar</a>
+        <a href="/historico" class="menu-item">Histórico</a>
+        <a href="/acervo" class="menu-item">Acervo</a>
+        <a href="/" class="menu-item sair">Sair</a>
+
+    </div>
+
+    <div class="conteudo">
+        {% block conteudo %}
+        {% endblock %}
+    </div>
+</body>
+</html>

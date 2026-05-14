@@ -1,0 +1,68 @@
+{% extends "base_privada.html" %}
+
+{% block titulo %}Minha Biblioteca{% endblock %}
+
+{% block conteudo %}
+<div class="dashboard-page">
+    <!-- Welcome Card -->
+    <div class="welcome-card">
+        <div class="welcome-icon">📚</div>
+        <div class="welcome-content">
+            <h2>Olá, seja bem-vindo!</h2>
+            <p>Você está na área de membros da Biblioteca Sorteadora.</p>
+            <p>Caso queira adicionar novos livros ao acervo, use a aba <strong>➕ Inserir</strong> na página de Acervo.</p>
+        </div>
+    </div>
+
+    <!-- Cards de Ação Rápida -->
+    <div class="action-cards">
+        <a href="/sortear" class="action-card">
+            <div class="action-icon">🎲</div>
+            <h3>Sortear Livro</h3>
+            <p>Deixe a sorte escolher</p>
+            <span class="action-btn">Sortear →</span>
+        </a>
+        
+        <a href="/buscar" class="action-card">
+            <div class="action-icon">🔍</div>
+            <h3>Buscar</h3>
+            <p>Encontre livros, autores ou sagas</p>
+            <span class="action-btn">Buscar →</span>
+        </a>
+        
+        <a href="/acervo" class="action-card">
+            <div class="action-icon">📚</div>
+            <h3>Acervo</h3>
+            <p>Veja todos os livros</p>
+            <span class="action-btn">Ver Acervo →</span>
+        </a>
+        
+        <a href="/historico" class="action-card">
+            <div class="action-icon">📋</div>
+            <h3>Histórico</h3>
+            <p>Seus livros sorteados</p>
+            <span class="action-btn">Ver Histórico →</span>
+        </a>
+    </div>
+
+    <!-- Livros Aleatórios -->
+    <div class="section">
+        <div class="section-header">
+            <h3>🎲 Alguns Livros do Nosso Acervo</h3>
+            <a href="/acervo" class="ver-todos">Ver todos →</a>
+        </div>
+        
+        <div class="livro-grid">
+            {% for livro in livros_aleatorios %}
+            <div class="livro-card-dash">
+                <div class="livro-icon">📖</div>
+                <div class="livro-info">
+                    <div class="livro-titulo">{{ livro[0] }}</div>
+                    <div class="livro-autor">✍️ {{ livro[1] }}</div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}

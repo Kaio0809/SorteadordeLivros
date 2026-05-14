@@ -1,0 +1,141 @@
+{% extends "base_privada.html" %}
+
+{% block titulo %}Buscar - {{ termo }}{% endblock %}
+
+{% block conteudo %}
+<div class="buscar-page">
+    <h2>🔍 Buscar no Acervo</h2>
+    
+    <form action="/buscar" method="GET" class="search-form">
+        <input type="text" 
+               name="q" 
+               value="{{ termo }}" 
+               placeholder="Digite o nome do livro, autor ou saga..."
+               autofocus>
+        <button type="submit">Buscar</button>
+    </form>
+    
+    {% if termo %}
+        <div class="result-count">
+            Resultados para: <strong>"{{ termo }}"</strong>
+        </div>
+        
+        <!-- Abas -->
+        <div class="abas-buscar">
+            <button class="aba-buscar-btn ativo" data-aba="livros">
+                📖 Livros ({{ resultados.livros|length if resultados.livros else 0 }})
+            </button>
+            <button class="aba-buscar-btn" data-aba="autores">
+                ✍️ Autores ({{ resultados.autor|length if resultados.autor else 0 }})
+            </button>
+            <button class="aba-buscar-btn" data-aba="sagas">
+                📚 Sagas ({{ resultados.sagas|length if resultados.sagas else 0 }})
+            </button>
+        </div>
+        
+        <!-- ABA LIVROS -->
+        <div id="aba-livros-buscar" class="aba-buscar-conteudo ativo">
+            {% if resultados.livros %}
+                <div class="resultados-grid">
+                    {% for item in resultados.livros %}
+                    <div class="resultado-card livro-card">
+                        <a href="/livro/{{ item[2] }}">
+                            <div class="card-icon">📖</div>
+                            <div class="card-info">
+                                <div class="card-title">{{ item[0] }}</div>
+                                <div class="card-subtitle">{{ item[1] }}</div>
+                            </div>
+                            <div class="card-arrow">→</div>
+                        </a>
+                    </div>
+                    {% endfor %}
+                </div>
+            {% else %}
+                <div class="sem-resultados">
+                    <div class="empty-icon">📚</div>
+                    <p>Nenhum livro encontrado para "{{ termo }}"</p>
+                </div>
+            {% endif %}
+        </div>
+        
+        <!-- ABA AUTORES -->
+        <div id="aba-autores-buscar" class="aba-buscar-conteudo">
+            {% if resultados.autor %}
+                <div class="resultados-grid">
+                    {% for item in resultados.autor %}
+                    <div class="resultado-card autor-card">
+                        <a href="/autor/{{ item[1] }}">
+                            <div class="card-icon">✍️</div>
+                            <div class="card-info">
+                                <div class="card-title">{{ item[0] }}</div>
+                            </div>
+                            <div class="card-arrow">→</div>
+                        </a>
+                    </div>
+                    {% endfor %}
+                </div>
+            {% else %}
+                <div class="sem-resultados">
+                    <div class="empty-icon">✍️</div>
+                    <p>Nenhum autor encontrado para "{{ termo }}"</p>
+                </div>
+            {% endif %}
+        </div>
+        
+        <!-- ABA SAGAS -->
+        <div id="aba-sagas-buscar" class="aba-buscar-conteudo">
+            {% if resultados.sagas %}
+                <div class="resultados-grid">
+                    {% for item in resultados.sagas %}
+                    <div class="resultado-card saga-card">
+                        <a href="/saga/{{ item[2] }}">
+                            <div class="card-icon">📚</div>
+                            <div class="card-info">
+                                <div class="card-title">{{ item[0] }}</div>
+                                <div class="card-subtitle">{{ item[1] }}</div>
+                            </div>
+                            <div class="card-arrow">→</div>
+                        </a>
+                    </div>
+                    {% endfor %}
+                </div>
+            {% else %}
+                <div class="sem-resultados">
+                    <div class="empty-icon">📖</div>
+                    <p>Nenhuma saga encontrada para "{{ termo }}"</p>
+                </div>
+            {% endif %}
+        </div>
+        
+    {% else %}
+        <div class="search-hint">
+            <div class="hint-icon">🔍</div>
+            <h3>O que você procura?</h3>
+            <p>Digite o nome de um livro, autor ou saga no campo acima</p>
+            <div class="hint-exemplos">
+                <span>📖 Harry Potter</span>
+                <span>✍️ Machado de Assis</span>
+                <span>📚 Senhor dos Anéis</span>
+            </div>
+        </div>
+    {% endif %}
+</div>
+
+<script>
+    // Alternar abas
+    const abas = document.querySelectorAll('.aba-buscar-btn');
+    const conteudos = document.querySelectorAll('.aba-buscar-conteudo');
+    
+    abas.forEach(aba => {
+        aba.addEventListener('click', () => {
+            const abaId = aba.dataset.aba;
+            
+            abas.forEach(a => a.classList.remove('ativo'));
+            aba.classList.add('ativo');
+            
+            conteudos.forEach(conteudo => conteudo.classList.remove('ativo'));
+            document.getElementById(`aba-${abaId}-buscar`).classList.add('ativo');
+        });
+    });
+</script>
+{% endblock %}

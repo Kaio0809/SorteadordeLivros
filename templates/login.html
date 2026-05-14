@@ -1,0 +1,40 @@
+{% extends "base_publica.html" %}
+
+{% block titulo %}Login{% endblock %}
+
+{% block conteudo %}
+<div class="login-container">
+    <div class="login-card">
+        <div class="login-header">
+            <div class="login-icon">🔐</div>
+            <h2>Bem-vindo de volta!</h2>
+            <p>Faça login para continuar</p>
+        </div>
+
+        {% if erro %}
+        <div class="alert alert-error">
+            <span>⚠️</span> {{ erro }}
+        </div>
+        {% endif %}
+
+        <form method="POST" class="login-form">
+            <div class="form-group">
+                <label>📧 E-mail</label>
+                <input type="email" name="email" placeholder="seu@email.com" required>
+            </div>
+
+            <div class="form-group">
+                <label>🔒 Senha</label>
+                <input type="password" name="senha" placeholder="••••••" required>
+            </div>
+
+            <button type="submit" class="btn-entrar">Entrar</button>
+        </form>
+
+        <div class="login-footer">
+            <p>Não tem uma conta? <a href="/cadastro">Cadastre-se aqui</a></p>
+            <a href="/" class="back-link">← Voltar para página inicial</a>
+        </div>
+    </div>
+</div>
+{% endblock %}
