@@ -10,18 +10,22 @@ const $$ = (selector, root=document) => [...root.querySelectorAll(selector)];
 const esc = value => String(value ?? "").replace(/[&<>"']/g, char => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[char]));
 const norm = value => String(value ?? "").normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLocaleLowerCase("pt-BR").trim();
 
+
 function loadState() {
   try {
     const saved = JSON.parse(localStorage.getItem(STORE_KEY) || "{}");
     state = {
       read: saved.read && typeof saved.read === "object" ? saved.read : {},
       history: Array.isArray(saved.history) ? saved.history : [],
-      addedBooks: Array.isArray(saved.addedBooks) ? saved.addedBooks : []
+      addedBooks: Array.isArray(saved.addedBooks) ? saved.addedBooks : [],
+      historyImported: saved.historyImported === true
     };
   } catch {
-    state = { read: {}, history: [], addedBooks: [] };
+    state = { read: {}, history: [], addedBooks: [], historyImported: false };
   }
 }
+
+
 function saveState() {
   localStorage.setItem(STORE_KEY, JSON.stringify(state));
 }
@@ -50,28 +54,85 @@ async function loadCSV(path) {
   if (!response.ok) throw new Error(`Não foi possível carregar ${path}`);
   return parseCSV(await response.text());
 }
+
+
 async function init() {
   loadState();
+
   try {
-    const [books, authors, series, sorteios] = await Promise.all([
-      loadCSV("./data/livros.csv"), loadCSV("./data/autores.csv"), loadCSV("./data/sagas.csv"), loadCSV('./data/sorteios.csv')
+    const [books, authors, series] = await Promise.all([
+      loadCSV("./data/livros.csv"),
+      loadCSV("./data/autores.csv"),
+      loadCSV("./data/sagas.csv")
     ]);
+
+    let sorteios = [];
+
+    try {
+      sorteios = await loadCSV("./data/sorteios.csv");
+    } catch {
+      sorteios = [];
+    }
+
+    const clean = value => {
+      const text = String(value ?? "").trim();
+      return !text || norm(text) === "null" ? "" : text;
+    };
+
     DATA.books = books.map(b => ({
-      id: String(b.id || "").trim(),
-      title: b.titulo || "",
-      authorId: String(b.autor_id || "").trim(),
-      seriesId: String(b.saga_id || "").trim(),
-      order: b.ordem || "",
-      initialRead: ["true","1","sim","yes"].includes(norm(b.lido))
+      id: clean(b.lid),
+      title: clean(b.titulo),
+      authorId: clean(b.autor_livro),
+      seriesId: clean(b.saga_livro),
+      order: clean(b.ordem_saga),
+      prerequisite: clean(b.prerequisito),
+      initialRead: ["true", "1", "sim", "yes"].includes(norm(b.lido))
     })).filter(b => b.id && b.title);
-    DATA.authors = authors.map(a => ({id:String(a.id||"").trim(),name:a.nome||""})).filter(a=>a.id&&a.name);
-    DATA.series = series.map(s => ({id:String(s.id||"").trim(),title:s.titulo||"",authorId:String(s.autor_id||"").trim()})).filter(s=>s.id&&s.title);
-    if (!DATA.books.length) throw new Error("O arquivo data/livros.csv não contém livros.");
+
+    DATA.authors = authors.map(a => ({
+      id: clean(a.aid),
+      name: clean(a.nome)
+    })).filter(a => a.id && a.name);
+
+    DATA.series = series.map(s => ({
+      id: clean(s.sid),
+      title: clean(s.titulo),
+      authorId: clean(s.autor)
+    })).filter(s => s.id && s.title);
+
+    if (!DATA.books.length) {
+      throw new Error("O arquivo data/livros.csv não contém livros válidos.");
+    }
+
+    if (!state.historyImported) {
+      if (!state.history.length) {
+        state.history = sorteios
+          .map(s => ({
+            id: clean(s.livro_id),
+            at: clean(s.data) || null,
+            sortId: clean(s.id_sorteio)
+          }))
+          .filter(s => s.id && bookExists(s.id))
+          .sort((a, b) => Number(b.sortId) - Number(a.sortId))
+          .map(s => ({ id: s.id, at: s.at }));
+      }
+
+      state.historyImported = true;
+      saveState();
+    }
+
     render();
   } catch (error) {
-    app.innerHTML = `<section class="panel"><div class="empty-state"><strong>Não consegui carregar os arquivos CSV.</strong><p>${esc(error.message)}</p><p>Publique a pasta data junto com index.html e static/.</p></div></section>`;
+    app.innerHTML = `<section class="panel"><div class="empty-state"><strong>Não consegui carregar os arquivos CSV.</strong><p>${esc(error.message)}</p><p>Confira se a pasta data está publicada junto com index.html e static/.</p></div></section>`;
   }
 }
+
+function bookExists(id) {
+  return DATA.books.some(book => String(book.id) === String(id));
+}
+
+
+
 function allBooks() {
   return [...DATA.books, ...state.addedBooks.map(b=>({...b, added:true}))];
 }

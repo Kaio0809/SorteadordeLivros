@@ -1,4 +1,4 @@
-"lid","titulo","autor_livro","saga_livro","ordem_saga","prerequisito","lido"
+lid,titulo,autor_livro,"saga_livro","ordem_saga","prerequisito","lido"
 1,"Vermelho Branco e Sangue Azul",1,NULL,NULL,NULL,True
 2,"Um Milhão de Finais Felizes",2,NULL,NULL,NULL,False
 3,"Dois Garotos, Um Encontro",3,1,1,NULL,False
