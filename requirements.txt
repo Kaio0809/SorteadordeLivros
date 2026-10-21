@@ -2,7 +2,5 @@ pandas
 numpy
 flask
 psycopg2
-base64
-io
 json
 gunicorn
