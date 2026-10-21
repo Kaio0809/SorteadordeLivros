@@ -5,7 +5,7 @@ import json
 app = Flask(__name__)
 
 def bd(sql, consulta=True):
-    conn = psycopg2.connect(host='localhost', database='livros', user='postgres',password='')
+    conn = psycopg2.connect(host='localhost', database='livros', user='postgres',password='12345')
     cur = conn.cursor()
     cur.execute(sql)
     if consulta:
