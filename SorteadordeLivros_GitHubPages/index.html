@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#171a5c">
+  <meta name="description" content="Organize seu acervo literário e deixe a sorte escolher sua próxima leitura.">
+  <title>Meus Livrinhos</title>
+  <link rel="stylesheet" href="./static/style.css">
+  <script src="./static/app.js" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="#/inicio" aria-label="Meus Livrinhos - início">
+      <span class="brand-mark">ML</span>
+      <span><strong>Meus Livrinhos</strong><small>sua próxima aventura começa aqui</small></span>
+    </a>
+    <button class="menu-toggle" id="menuToggle" aria-label="Abrir menu" aria-expanded="false">☰</button>
+    <nav class="main-nav" id="mainNav">
+      <a href="#/inicio" data-nav="inicio">Início</a>
+      <a href="#/sortear" data-nav="sortear">Sortear livro</a>
+      <a href="#/buscar" data-nav="buscar">Buscar</a>
+      <a href="#/acervo" data-nav="acervo">Acervo</a>
+      <a href="#/historico" data-nav="historico">Histórico</a>
+    </nav>
+  </header>
+  <main id="app" class="page-shell">
+    <section class="loading-panel"><span class="spinner"></span><p>Preparando sua biblioteca...</p></section>
+  </main>
+  <footer class="site-footer">
+    <span>Meus Livrinhos</span>
+    <span>Seu próximo capítulo está esperando.</span>
+  </footer>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+</body>
+</html>
