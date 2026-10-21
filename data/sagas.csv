@@ -1,6 +1,41 @@
-﻿id,titulo,autor_id
-1,Harry Potter,1
-2,O Senhor dos Anéis,2
-3,Jogos Vorazes,6
-4,A Crônica do Matador do Rei,8
-5,Percy Jackson e os Olimpianos,10
+"sid","titulo","autor"
+1,"Heartstopper",3
+2,"Tori",3
+3,"Game Changers",4
+4,"Harry Potter",5
+5,"Hogwarts",5
+6,"Terra-Média",6
+7,"Percy Jackson e os Olimpianos",7
+8,"Os Heróis do Olimpo",7
+9,"As Provações de Apolo",7
+10,"As Crônicas de Kane",7
+11,"Magnus Chase e os Deuses de Asgard",7
+12,"Samideuses e Magos",7
+13,"Os Instrumentos Mortais",8
+14,"As Peças Infernais",8
+15,"Os Artifícios das Trevas",8
+16,"As Últimas Horas",8
+17,"Magisterium",9
+18,"A Provação",11
+19,"Os Dragões Originais",12
+20,"Os Reis de Avalier",13
+21,"O Povo do Ar",9
+22,"O Herdeiro Roubado",9
+23,"Contos de Fadas Modernos",9
+24,"A Última Arauto-Maga",16
+25,"As Aventuras do Caça-Feitiço",22
+26,"As Crônicas de Mântia",30
+27,"Os Elementais",35
+28,"A Saga Wingfeather",36
+29,"Ascenção das Trevas",37
+30,"Crônicas do Multiverso",38
+31,"As Crônicas de Gelo e Fogo",39
+32,"Rainha Vermelha",40
+33,"As Crônicas de Narnia",41
+34,"Duna",42
+35,"A Jornada de Alina",44
+36,"Six of Crows",44
+37,"Nikolai",44
+38,"Jogos Vorazes",45
+39,"A Roda do Tempo",46
+40,"Ciclo Terramar",48

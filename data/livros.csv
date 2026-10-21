@@ -1,21 +1,225 @@
-﻿id,titulo,autor_id,saga_id,ordem,lido
-1,Harry Potter e a Pedra Filosofal,1,1,1,false
-2,Harry Potter e a Câmara Secreta,1,1,2,false
-3,Harry Potter e o Prisioneiro de Azkaban,1,1,3,false
-4,O Hobbit,2,2,1,false
-5,A Sociedade do Anel,2,2,2,false
-6,O Senhor dos Anéis: As Duas Torres,2,2,3,false
-7,Dom Casmurro,3,,,false
-8,Memórias Póstumas de Brás Cubas,3,,,false
-9,Orgulho e Preconceito,4,,,false
-10,1984,5,,,false
-11,A Revolução dos Bichos,5,,,false
-12,Jogos Vorazes,6,3,1,false
-13,Em Chamas,6,3,2,false
-14,A Esperança,6,3,3,false
-15,Coraline,7,,,false
-16,O Nome do Vento,8,4,1,false
-17,O Temor do Sábio,8,4,2,false
-18,A Menina que Roubava Livros,9,,,false
-19,Percy Jackson e o Ladrão de Raios,10,5,1,false
-20,O Mar de Monstros,10,5,2,false
+"lid","titulo","autor_livro","saga_livro","ordem_saga","prerequisito","lido"
+1,"Vermelho Branco e Sangue Azul",1,NULL,NULL,NULL,True
+2,"Um Milhão de Finais Felizes",2,NULL,NULL,NULL,False
+3,"Dois Garotos, Um Encontro",3,1,1,NULL,False
+4,"Minha Pessoa Favorita",3,1,2,NULL,False
+5,"Um Passo Adiante",3,1,3,NULL,False
+6,"De Mãos Dadas",3,1,4,NULL,False
+7,"Mais Fortes Juntos",3,1,5,NULL,False
+8,"Este Inverno",3,2,1,1,False
+9,"Um Ano Solitário",3,2,2,1,False
+10,"Nick e Charlie",3,2,3,1,False
+11,"Rádio Silêncio",3,2,4,1,False
+12,"Sem Amor",3,2,5,1,False
+13,"Almanaque Heartstopper",3,NULL,NULL,1,False
+14,"Eu Nasci pra Isso",3,NULL,NULL,NULL,False
+15,"Game Changer",4,3,1,NULL,False
+16,"Heated Rivalry",4,3,2,NULL,False
+17,"Tough Guy",4,3,3,NULL,False
+18,"Common Goal",4,3,4,NULL,False
+19,"Role Model",4,3,5,NULL,False
+20,"The Long Game",4,3,6,NULL,False
+21,"Harry Potter e a Pedra Filosofal",5,4,1,NULL,True
+22,"Harry Potter e a Câmara Secreta",5,4,2,NULL,True
+23,"Harry Potter e o Prisioneiro de Azkaban",5,4,3,NULL,False
+24,"Harry Potter e o Cálice de Fogo",5,4,4,NULL,False
+25,"Harry Potter e a Ordem da Fênix",5,4,5,NULL,False
+26,"Harry Potter e o Enigma do Príncipe",5,4,6,NULL,False
+27,"Harry Potter e as Relíquias da Morte",5,4,7,NULL,True
+28,"Hogwarts: Um Guia Imperfeito e Impreciso",5,5,1,4,False
+29,"Histórias de Hogwarts",5,5,2,4,False
+30,"Proezas, Percaucios e Passatempos Perigosos",5,5,3,4,False
+31,"Poder, Política e Poltergeists Petulantes",5,5,4,4,False
+32,"Quadribol Através dos Séculos",5,NULL,NULL,4,False
+33,"Animais Fantasticos e Onde Habitam",5,NULL,NULL,4,False
+34,"Os Contos de Bedle, O Bardo",5,NULL,NULL,4,False
+35,"O Hobbit",6,6,1,NULL,False
+36,"A Sociedade do Anel",6,6,2,NULL,False
+37,"As Duas Torres",6,6,3,NULL,False
+38,"O Retorno do Rei",6,6,4,NULL,False
+39,"O Silmarillion",6,6,5,NULL,False
+40,"Contos Inacabados de Númenos e da Terra Média",6,6,6,NULL,False
+41,"Os Filhos de Húrin",6,6,7,NULL,False
+42,"Beren e Lúthien",6,6,8,NULL,False
+43,"A Queda de Númenor",6,6,9,NULL,False
+44,"O Ladrão de Raios",7,7,1,NULL,True
+45,"O Mar de Monstros",7,7,2,NULL,True
+46,"A Maldição do Titã",7,7,3,NULL,True
+47,"A Batalha do Labirinto",7,7,4,NULL,True
+48,"O Último Olimpiano",7,7,5,NULL,True
+49,"Os Arquivos do Semideus",7,7,6,NULL,True
+50,"O Herói Perdido",7,8,1,7,True
+51,"O Filho de Netuno",7,8,2,7,True
+52,"A Marca de Atena",7,8,3,7,True
+53,"A Casa de Hades",7,8,4,7,True
+54,"O Sangue do Olimpo",7,8,5,7,True
+55,"Os Diários do Semideus",7,8,6,7,True
+56,"O Oráculo Oculto",7,9,1,8,False
+57,"A Profecia das Sombras",7,9,2,8,False
+58,"O Labirinto de Fogo",7,9,3,8,False
+59,"A Tumba do Tirano",7,9,4,8,False
+60,"A Torre de Nero",7,9,5,8,False
+61,"O Sol e a Estrela",7,NULL,NULL,8,False
+62,"Percy Jackson e o Cálice dos Deuses",7,NULL,NULL,8,False
+63,"A Fúria da Deusa Tríplice",7,NULL,NULL,8,False
+64,"A Pirâmide Vermelha",7,10,1,8,False
+65,"O Trono de Fogo",7,10,2,8,False
+66,"A Sombra da Serpente",7,10,3,8,False
+67,"A Espada do verão",7,11,1,8,False
+68,"O Martelo de Thor",7,11,2,8,False
+69,"O Navio dos Mortos",7,11,3,8,False
+70,"O Filho de Sobek",7,12,1,10,False
+71,"O Cajado de Serápis",7,12,2,10,False
+72,"A Coroa de Ptolomeu",7,12,3,10,False
+73,"Os Heróis Gregos",7,NULL,NULL,7,False
+74,"Percy Jackson e os Deuses Gregos",7,NULL,NULL,7,False
+75,"Os Segredos do Acampamento Meio-Sangue",7,NULL,NULL,7,False
+76,"Os Segredos do Acampamento Júpiter",7,NULL,NULL,8,False
+77,"Cidade dos Ossos",8,13,1,NULL,False
+78,"Cidade das Cinzas",8,13,2,NULL,False
+79,"Cidade de Vidro",8,13,3,NULL,False
+80,"Cidade dos Anjos Caídos",8,13,4,NULL,False
+81,"Cidade das Almas Perdidas",8,13,5,NULL,False
+82,"Cidade do Fogo Celestial",8,13,6,NULL,False
+83,"Contos da Academia dos Caçadores de Sombras",8,NULL,NULL,13,False
+84,"As Crônicas de Bane",8,NULL,NULL,13,False
+85,"Anjo Mecânico",8,14,1,13,False
+86,"Príncipe Mecânico",8,14,2,13,False
+87,"Princesa Mecânica",8,14,3,13,False
+88,"Dama da Meia-Noite",8,15,1,14,False
+89,"Senhor das Sombras",8,15,2,14,False
+90,"Rainha do Ar e da Escuridão",8,15,3,14,False
+91,"Corrente de Ouro",8,16,1,15,False
+92,"Corrente de Prata",8,16,2,15,False
+93,"Corrente de Espinhos",8,16,3,15,False
+94,"Fantasmas do Mercado das Sombras",8,NULL,NULL,16,False
+95,"Os Pergaminhos Vermelhos da Magia",8,NULL,NULL,16,False
+96,"O Livro Branco Perdido",8,NULL,NULL,16,False
+97,"Melhores de Preto",8,NULL,NULL,16,False
+98,"Códex dos Caçadores das Sombras",8,NULL,NULL,16,False
+99,"O Desafio de Ferro",9,17,1,NULL,False
+100,"A Luva de Cobre",9,17,2,NULL,False
+101,"A Chave de Bronze",9,17,3,NULL,False
+102,"A Máscara de Prata",9,17,4,NULL,False
+103,"A Torre de Ouro",9,17,5,NULL,False
+104,"Elite de Prata",10,NULL,NULL,NULL,False
+105,"Os Jogos dos Deuses",11,18,1,NULL,False
+106,"As Coisas que os Deuses Destroem",11,18,2,NULL,False
+107,"A Guardiã de Pedras",12,19,1,NULL,False
+108,"O Último Rei Dragão",13,20,1,NULL,False
+109,"O Implacável Rei das Fadas",13,20,3,NULL,False
+110,"O Rei Lobo",13,20,4,NULL,False
+111,"O Príncipe Cruel",9,21,1,NULL,False
+112,"O Rei Perverso",9,21,2,NULL,False
+113,"A Rainha do Nada",9,21,3,NULL,False
+114,"Como o Rei de Elphame Aprendeu a Odiar Histórias",9,21,4,NULL,False
+115,"As Irmãs Perdidas",9,21,5,NULL,False
+116,"O Herdeiro Roubado",9,22,1,21,False
+117,"O Trono do Prisioneiro",9,22,2,21,False
+118,"Tithe - Ti Valente",9,23,1,21,False
+119,"Valente",9,23,2,21,False
+120,"Reino de Ferro",9,23,3,21,False
+121,"Carry On",14,NULL,NULL,NULL,False
+122,"Os Garotos do Cemitério",15,NULL,NULL,NULL,False
+123,"Peão da Magia",16,24,1,NULL,False
+124,"A Promessa da Magia",16,24,2,NULL,False
+125,"Preço da Magia",16,24,3,NULL,False
+126,"Labirinto Perdido",17,NULL,NULL,NULL,False
+127,"Corpos Secos: Um Romance",18,NULL,NULL,NULL,False
+128,"Casa de Lego",19,NULL,NULL,NULL,False
+129,"Teoria do Recomeço",19,NULL,NULL,NULL,False
+130,"Caçador de Assassinos VS Agente da FBI",20,NULL,NULL,NULL,False
+131,"Como me Apaixonei pelo Elfo",21,NULL,NULL,NULL,False
+132,"O Aprendiz",22,25,1,NULL,False
+133,"A Maldição",22,25,2,NULL,False
+134,"O Segredo",22,25,3,NULL,False
+135,"A Batalha",22,25,4,NULL,False
+136,"O Erro",22,25,5,NULL,False
+137,"O Sacrifício",22,25,6,NULL,False
+138,"O Pesadelo",22,25,7,NULL,False
+139,"O Destino",22,25,8,NULL,False
+140,"Eu Sou Grimalkin",22,25,9,NULL,False
+141,"O Sangue",22,25,10,NULL,False
+142,"O Conto de Slither",22,25,11,NULL,False
+143,"Alice",22,25,12,NULL,False
+144,"A Vingança",22,25,13,NULL,False
+145,"Olhos Rubi",23,NULL,NULL,NULL,False
+146,"Garoto de Ipanema",24,NULL,NULL,NULL,False
+147,"Coração de Porcelana",25,NULL,NULL,NULL,False
+148,"Mar Aberto: No Meio do Nada",26,NULL,NULL,NULL,False
+149,"Instituto Sagrado",27,NULL,NULL,NULL,False
+150,"Feitiço do Olhar: A Redenção do Lobisomem",28,NULL,NULL,NULL,False
+151,"Enlace",29,NULL,NULL,NULL,False
+152,"Sussurros de Neve e Sangue",30,26,1,NULL,False
+153,"Marés de Sangue e Profecias",30,26,2,NULL,False
+154,"Cisne Negro",31,NULL,NULL,NULL,False
+155,"Vilão em Reabilitação",32,NULL,NULL,NULL,False
+156,"Sombras Gêmeas",33,NULL,NULL,NULL,False
+157,"Para Sempre",34,NULL,NULL,NULL,False
+158,"Ato 1: Novos Princípios",35,27,1,NULL,False
+159,"Ato 2: Mundo da Discórdia",35,27,2,NULL,False
+160,"Nos Limites do Mar Sombrio da Escuridão",36,28,1,NULL,False
+161,"Norte! Ou Seja Devorado",36,28,2,NULL,False
+162,"O Monstro nos Vales",36,28,3,NULL,False
+163,"O Guardião e o Rei Lobo",36,28,4,NULL,False
+164,"Ascensão das Trevas",37,29,1,NULL,False
+165,"Herdeira das Trevas",37,29,2,NULL,False
+166,"Academia dos Magos",38,30,1,NULL,False
+167,"A Guerra dos Tronos",39,31,1,NULL,False
+168,"A Fúria dos Reis",39,31,2,NULL,False
+169,"A Tormenta de Espadas",39,31,3,NULL,False
+170,"O Festim dos Corvos",39,31,4,NULL,False
+171,"A Dança dos Dragões",39,31,5,NULL,False
+172,"A Rainha Vermelha",40,32,1,NULL,False
+173,"Espada de Vidro",40,32,2,NULL,False
+174,"A Prisão do Rei",40,32,3,NULL,False
+175,"Tempestade de Guerra",40,32,4,NULL,False
+176,"Trono Destruído",40,32,5,NULL,False
+177,"O Leão, A Feiticeira e o Guarda-Roupa",41,33,1,NULL,False
+178,"Príncipe Caspian: O retorno a Nárnia",41,33,2,NULL,False
+179,"A Viagem do Peregrino da Alvorada",41,33,3,NULL,False
+180,"A Cadeira de Prata",41,33,4,NULL,False
+181,"O Cavalo e Seu Menino",41,33,5,NULL,False
+182,"O Sobrinho do Mágico",41,33,6,NULL,False
+184,"A Última Batalha",41,33,7,NULL,False
+185,"Duna",42,34,1,NULL,False
+186,"Messias de Duna",42,34,2,NULL,False
+187,"Filhos de Duna",42,34,3,NULL,False
+188,"Imperador Deus de Duna",42,34,4,NULL,False
+189,"Hereges de Duna",42,34,5,NULL,False
+190,"Herdeiras de Duna",42,34,6,NULL,False
+191,"Irmandade de Duna",43,NULL,NULL,34,False
+192,"Casa Atreides",43,NULL,NULL,34,False
+193,"Sombra e Ossos",44,35,1,NULL,False
+194,"Sol e Tormenta",44,35,2,NULL,False
+195,"Ruína e Ascenção",44,35,3,NULL,False
+196,"Sangue e Mentiras",44,36,1,35,False
+197,"Vingança e Redenção",44,36,2,35,False
+198,"King of Scars: Trono de Ouro e Cinzas",44,37,1,35,False
+199,"Rule of Wolves: Trono de Prata e Noite",44,37,2,35,False
+200,"Jogos Vorazes",45,38,1,NULL,False
+201,"Em Chamas",45,38,2,NULL,False
+202,"A Esperança",45,38,3,NULL,False
+203,"A Cantiga dos Pássaros e das Serpentes",45,38,4,NULL,False
+205,"Amanhecer na Colheita",45,38,5,NULL,False
+206,"O Olho do Mundo",46,39,1,NULL,False
+207,"A Grande Caçada",46,39,2,NULL,False
+208,"Dragão Renascido",46,39,3,NULL,False
+209,"Ascenção da Sombra",46,39,4,NULL,False
+210,"As Chamas do Paraíso",46,39,5,NULL,False
+211,"O Senhor do Caos",46,39,6,NULL,False
+212,"A Coroa de Espadas",46,39,7,NULL,False
+213,"O Caminho das Adagas",46,39,8,NULL,False
+214,"O Coração do Inverno",46,39,9,NULL,False
+215,"A Encruzilhada do Crepúsculo",46,39,10,NULL,False
+216,"Faca de Sonhos",46,39,11,NULL,False
+217,"A Tempestade se Formando",46,39,12,NULL,False
+218,"As Torres da Meia-Noite",46,39,13,NULL,False
+219,"Uma Memória da Luz",46,39,14,NULL,False
+220,"Deuses Americanos",47,NULL,NULL,NULL,False
+221,"O Feiticeiro de Terramar",48,40,1,NULL,False
+222,"As Tumbas de Atuan",48,40,2,NULL,False
+223,"A Última Margem",48,40,3,NULL,False
+224,"Tehanu",48,40,4,NULL,False
+225,"Contos de Terramar",48,40,5,NULL,False
+226,"Quinze Dias",2,NULL,NULL,NULL,False
