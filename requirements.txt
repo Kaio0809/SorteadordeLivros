@@ -1,6 +1,5 @@
 pandas
 numpy
 flask
-psycopg2
-json
+psycopg2-binary
 gunicorn
