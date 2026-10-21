@@ -53,8 +53,8 @@ async function loadCSV(path) {
 async function init() {
   loadState();
   try {
-    const [books, authors, series] = await Promise.all([
-      loadCSV("./data/livros.csv"), loadCSV("./data/autores.csv"), loadCSV("./data/sagas.csv")
+    const [books, authors, series, sorteios] = await Promise.all([
+      loadCSV("./data/livros.csv"), loadCSV("./data/autores.csv"), loadCSV("./data/sagas.csv"), loadCSV('./data/sorteios.csv')
     ]);
     DATA.books = books.map(b => ({
       id: String(b.id || "").trim(),
